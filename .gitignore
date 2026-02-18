@@ -1,0 +1,39 @@
+# Ambiente
+.env
+.env.*
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Build
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# Docker
+*.db
+*.sqlite3
+
+
+# Docker
+*.log
+
+
+# AI tools
+.claude/
+.claude
+
+# OS
+.DS_Store
+
