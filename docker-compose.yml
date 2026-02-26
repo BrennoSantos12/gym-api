@@ -9,6 +9,8 @@ services:
       - "5433:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+    networks:
+      - appnet
 
   api:
     build: .
@@ -20,7 +22,13 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    entrypoint: ["sh", "/app/entrypoint.sh"]
+    networks:
+      - appnet
 
 volumes:
   pgdata:
+
+networks:
+  appnet:
+    driver: bridge

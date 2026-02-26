@@ -5,7 +5,8 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from app.models.training_plan_model import TrainingPlan
 from app.models.user_model import User
-from app.schemas.training_plan_schema import TrainingPlanResponse
+
+from app.schemas.training_plan_schema import TrainingPlanResponse, ReportTrainingPlanResponse
 from app.schemas.user_schema import UserCreate, UserResponse, UserUpdate
 
 router = APIRouter(prefix="/users", tags=["Users"])
@@ -33,6 +34,8 @@ def get_today_training(user_id: int, db: Session = Depends(get_db)):
 def get_user_trainings(user_id: int, db: Session = Depends(get_db)):
     trainings = db.query(TrainingPlan).filter(TrainingPlan.user_id == user_id).all()
     return trainings
+
+
 
 
 @router.post("/", response_model=UserResponse)

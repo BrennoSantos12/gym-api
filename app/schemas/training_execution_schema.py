@@ -6,8 +6,8 @@ class TrainingExecutionCreate(BaseModel):
     training_session_id: int
     training_plan_exercise_id: int
     sets_done: int
-    reps: int
-    weight: int
+    reps: float
+    weight: float
 
 
 class TrainingExecutionResponse(BaseModel):
@@ -15,8 +15,8 @@ class TrainingExecutionResponse(BaseModel):
     training_session_id: int
     training_plan_exercise_id: int
     sets_done: int
-    reps: int
-    weight: int
+    reps: float
+    weight: float
 
     model_config = {"from_attributes": True}
 

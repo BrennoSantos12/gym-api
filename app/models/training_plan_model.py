@@ -18,5 +18,5 @@ class TrainingPlan(Base):
         training = relationship("Training", back_populates="training_plans")
         day = relationship("Day", back_populates="training_plans")
 
-        training_plan_exercises = relationship("TrainingPlanExercise", back_populates="training_plan") 
-        training_sessions = relationship("TrainingSession", back_populates="training_plan")
+        training_plan_exercises = relationship("TrainingPlanExercise", back_populates="training_plan", cascade="all, delete-orphan")
+        training_sessions = relationship("TrainingSession", back_populates="training_plan", cascade="all, delete-orphan")

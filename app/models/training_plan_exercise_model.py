@@ -9,10 +9,10 @@ class TrainingPlanExercise(Base):
 
 
         id = Column(Integer, primary_key=True, index=True)
-        training_plan_id = Column(Integer, ForeignKey("training_plans.id"), nullable=False)
+        training_plan_id = Column(Integer, ForeignKey("training_plans.id", ondelete="CASCADE"), nullable=False)
         exercise_id = Column(Integer, ForeignKey("exercises.id"), nullable=False)
     
 
         training_plan = relationship("TrainingPlan", back_populates="training_plan_exercises")
         exercise = relationship("Exercise", back_populates="training_plan_exercises")
-        training_executions = relationship("TrainingExecution", back_populates="training_plan_exercise")
+        training_executions = relationship("TrainingExecution", back_populates="training_plan_exercise", cascade="all, delete-orphan")

@@ -16,8 +16,8 @@ class TrainingPlanReportItem(BaseModel):
 class ExerciseExecutionStats(BaseModel):
     """Estatísticas de uma execução específica"""
     sets_done: Optional[int] = None
-    reps: Optional[int] = None
-    weight: Optional[int] = None
+    reps: Optional[float] = None
+    weight: Optional[float] = None
     performed_date: str  # ISO format
 
 
