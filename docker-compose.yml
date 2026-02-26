@@ -1,12 +1,11 @@
 services:
   db:
     image: postgres:16
+    restart: unless-stopped
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: academia
-    ports:
-      - "5433:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
@@ -14,14 +13,13 @@ services:
 
   api:
     build: .
+    restart: unless-stopped
     depends_on:
       - db
     env_file:
       - .env
     ports:
       - "8000:8000"
-    volumes:
-      - .:/app
     entrypoint: ["sh", "/app/entrypoint.sh"]
     networks:
       - appnet
@@ -32,3 +30,36 @@ volumes:
 networks:
   appnet:
     driver: bridge
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
